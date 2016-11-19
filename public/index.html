@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />		
+		<link rel="stylesheet" href="/css/styles.css" />		
+	</head>	
+
+	<body>	
+
+		<div class="container">
+			<h3 >URL Shortener Microservice </h3>
+			<li> User Story:  I can pass a URL as a parameter and I will receive a shortened URL in the JSON response. </li>
+			<li> User Story: If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead. </li>
+			<li> User Story: When I visit that shortened URL, it will redirect me to my original link.</li>
+			<hr />
+			<h4>Usage</h4>
+			<p>The /new/SOMEURL route adds a new shortUrl to the db if SOMEURL is a valid url.</p>
+			<p> Example: <br/> <code>http://localhost:3000/new/https://nodejs.org/en/</code>
+			<br />produces an output like the following: 
+			<br /><code>{"original_url":"https://nodejs.org/en/","short_url":"http://localhost:3000/1008"}</code></p>
+			<p> Now <code>http://localhost:3000/1008</code> redirects to <code>https://nodejs.org/en/</code>.</p>
+			<hr />
+			<footer>2016 L. Stefanidis for freeCodeCamp</footer>
+
+		</div>
+
+	</body>
+
+</html>

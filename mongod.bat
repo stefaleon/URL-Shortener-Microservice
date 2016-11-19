@@ -1,0 +1,1 @@
+C:\MongoDB\Server\3.2\bin\mongod.exe  --dbpath=C:\databases\shorturls\data
