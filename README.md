@@ -8,5 +8,7 @@
 #### Dependencies
 * Express
 * url-exists
-* mongoose
+* mongoose  
+
+## Usage: https://url-shortener-ls.herokuapp.com/new/<someValidURL>
 
