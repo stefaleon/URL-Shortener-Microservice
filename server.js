@@ -5,8 +5,11 @@ var urlExists = require('url-exists');
 var mongoose = require('mongoose');
 var ShortUrl = require('./models/shortUrl');
 var seedDb = require('./seeds');
+var dbURL = process.env.dbURL || 'mongodb://localhost/shorturls';
+var appURL = process.env.appURL || 'http://localhost:3000/';
 
-mongoose.connect('mongodb://localhost/shorturls');
+
+mongoose.connect(dbURL);
 
 
 // initial seed for the db
@@ -49,7 +52,7 @@ app.get('/new/*', function (req, res){
 			newShortUrl = { id: idCounter, destination: testUrl };
 			console.log('newShortUrl is:', newShortUrl);
 			ShortUrl.create(newShortUrl);			
-			res.json({ original_url: testUrl, short_url: 'http://localhost:3000/' + idCounter });	
+			res.json({ original_url: testUrl, short_url: appURL + idCounter });	
 		}
 		else {
 			res.send({error: 'Invalid url.'});
