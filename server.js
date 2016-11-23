@@ -15,20 +15,31 @@ mongoose.connect(dbURL);
 // initial seed for the db
 //seedDb();
 
-
+// idCounter is used in order to create the shortened url
 var idCounter = '';
 var validUrl = '';
 
-// checking in the db to find the last (max) id so that we may
-// assign to idCounter from there on to our next valid destination entries
-ShortUrl
-  .findOne({ })
-  .sort('-id')  // give me the max
-  .exec(function (err, foundShortUrl) {
-    console.log('max id is', foundShortUrl.id);
-    idCounter =  foundShortUrl.id;
-    console.log('current idCounter is', idCounter);
-  });
+// checking if db is empty in order to properly assign a value to idCounter
+ShortUrl.count(function (err, count) {
+	if (err) {
+		throw err;
+	} else if (count === 0) {
+        console.log('count is zero!');
+        idCounter = '1000';       
+    } else {
+    	console.log('count is:', count);
+    	// checking in the db to find the last (max) id so that we may
+		// assign to idCounter from there on to our next valid destination entries
+		ShortUrl
+		  .findOne({ })
+		  .sort('-id')  // give me the max
+		  .exec(function (err, foundShortUrl) {
+		    console.log('max id is', foundShortUrl.id);
+		    idCounter =  foundShortUrl.id;
+		    console.log('current idCounter is', idCounter);
+		  });	
+    }
+});
 
 
 app.use(express.static('public'));
