@@ -10,5 +10,5 @@
 * url-exists
 * mongoose  
 
-## Usage: https://url-shortener-ls.herokuapp.com/new/<someValidURL>
+## Usage: https://url-shortener-ls.herokuapp.com/new/[URL]
 
